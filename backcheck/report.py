@@ -135,6 +135,14 @@ def audit(
             f"Short backtests are fragile; longer is materially better."
         )
 
+    notes.append(
+        "backcheck audits the return series as given. It answers 'is this "
+        "Sharpe statistically real?' -- not 'is this strategy profitable net "
+        "of costs?'. If these returns are gross of trading costs, taxes, and "
+        "slippage, the net picture is worse: a turnover-heavy strategy can "
+        "carry a >2%/yr tax-and-cost hurdle and still pass every test here."
+    )
+
     return IntegrityReport(
         n_obs=n,
         periods_per_year=periods_per_year,

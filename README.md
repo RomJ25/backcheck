@@ -64,11 +64,12 @@ produces:
   min track record    13396 observations
 ----------------------------------------------------------------
   FLAGS
-   [!] LIKELY OVERFIT: deflated Sharpe 0.00 < 0.95. Against 5000
-       trials, this edge is not distinguishable from the best
-       you'd expect by chance.
-   [!] SHARPE NOT SIGNIFICANT: PSR 0.64 < 0.95. ...
-   [!] TRACK RECORD TOO SHORT: needs ~13396 observations; you have 600.
+   [!] LIKELY OVERFIT: deflated Sharpe 0.00 < 0.95. Against 5000 trials, this edge is not distinguishable from the best you'd expect by chance.
+   [!] SHARPE NOT SIGNIFICANT: PSR 0.64 < 0.95. Even ignoring selection bias, the sample does not establish a positive Sharpe at 95% confidence.
+   [!] TRACK RECORD TOO SHORT: needs ~13396 observations for significance; you have 600.
+----------------------------------------------------------------
+  NOTES
+   -   backcheck audits the return series as given. It answers 'is this Sharpe statistically real?' -- not 'is this strategy profitable net of costs?'. If these returns are gross of trading costs, taxes, and slippage, the net picture is worse: a turnover-heavy strategy can carry a >2%/yr tax-and-cost hurdle and still pass every test here.
 ----------------------------------------------------------------
   VERDICT: LIKELY OVERFIT — the edge does not survive selection bias.
 ================================================================
@@ -148,4 +149,6 @@ MIT — see [LICENSE](LICENSE).
 
 *`backcheck` is a statistical tool, not financial advice. A passing report is
 evidence a strategy is not obviously overfit — it is not a guarantee of future
-returns.*
+returns. It audits the return series exactly as supplied: feed it gross returns
+and the trading costs, taxes, and slippage that decide real-world profitability
+are not accounted for.*
